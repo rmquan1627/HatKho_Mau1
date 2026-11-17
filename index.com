@@ -1,0 +1,851 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#fff9f2" />
+  <meta name="description" content="Nut Paradise — Công Ty TNHH Nut Paradise. Đại lý phân phối các dòng hạt dinh dưỡng tuyển chọn, mang nguồn dinh dưỡng tự nhiên đến cuộc sống hiện đại." />
+  <title>Nut Paradise — Dinh dưỡng từ những điều nguyên bản</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #fff9f2;
+      --paper-deep: #f2e7dc;
+      --olive: #4a5038;
+      --olive-2: #626747;
+      --olive-soft: #e9e5d8;
+      --ink: #30251f;
+      --muted: #7d6b5e;
+      --copper: #e05433;
+      --copper-light: #f0a36d;
+      --line: rgba(104, 65, 45, .17);
+      --serif: "Fraunces", Georgia, serif;
+      --sans: "DM Sans", Arial, sans-serif;
+      --ease: cubic-bezier(.2,.75,.2,1);
+      --shadow: 0 24px 70px rgba(39, 42, 32, .12);
+      --container: 1240px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    body.is-loading { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button, input, textarea, select { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    img { display: block; max-width: 100%; }
+    ::selection { background: var(--olive); color: var(--paper); }
+    .container { width: min(var(--container), calc(100% - 64px)); margin-inline: auto; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; text-transform: uppercase; letter-spacing: .16em; font-size: 10px; font-weight: 700; color: var(--copper); }
+    .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+    .display { font-family: var(--serif); font-weight: 400; letter-spacing: -.055em; line-height: .98; }
+    .section-kicker { color: var(--copper); text-transform: uppercase; font-size: 10px; letter-spacing: .18em; font-weight: 700; }
+
+    /* Intro */
+    .intro { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; background: #f8f5ee; transition: opacity .9s var(--ease), visibility .9s; }
+    .intro.is-done { opacity: 0; visibility: hidden; pointer-events: none; }
+    .intro__grain { position: absolute; inset: 0; opacity: .18; pointer-events: none; background-image: radial-gradient(#9b8f7b .55px, transparent .55px); background-size: 7px 7px; mask-image: linear-gradient(135deg, black, transparent 75%); }
+    .intro__content { position: relative; width: min(390px, 72vw); display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .intro__orbit { position: absolute; width: 280px; height: 180px; top: 6%; border: 1px solid rgba(168,95,61,.16); border-radius: 50%; transform: rotate(-17deg); animation: orbit 4s linear infinite; }
+    .intro__orbit::before, .intro__orbit::after { content: ""; position: absolute; width: 9px; height: 9px; background: var(--copper-light); border-radius: 50%; box-shadow: 0 0 22px rgba(201,149,112,.7); }
+    .intro__orbit::before { left: 12%; top: 16%; }
+    .intro__orbit::after { right: 9%; bottom: 18%; width: 6px; height: 6px; }
+    .intro__logo { position: relative; z-index: 2; width: 100%; filter: drop-shadow(0 12px 17px rgba(168,95,61,.10)); animation: logoReveal 1.15s var(--ease) both; }
+    .intro__line { width: 120px; height: 1px; margin-top: 28px; background: rgba(45,58,46,.14); overflow: hidden; }
+    .intro__line::after { content: ""; display: block; width: 100%; height: 100%; background: var(--copper); transform: scaleX(0); transform-origin: left; animation: loadingLine 1.8s .25s var(--ease) forwards; }
+    .intro__caption { margin-top: 15px; color: #827b6c; text-transform: uppercase; letter-spacing: .24em; font-size: 9px; animation: fadeUp .9s .4s both; }
+    @keyframes logoReveal { from { opacity: 0; transform: translateY(18px) scale(.94); filter: blur(7px); } to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } }
+    @keyframes loadingLine { to { transform: scaleX(1); } }
+    @keyframes orbit { to { transform: rotate(343deg); } }
+
+    /* Header */
+    .site-header { position: absolute; z-index: 30; top: 0; left: 0; right: 0; border-bottom: 1px solid rgba(45,58,46,.10); transition: background .35s, box-shadow .35s; }
+    .site-header.is-sticky { position: fixed; background: rgba(248,245,238,.91); backdrop-filter: blur(16px); box-shadow: 0 8px 28px rgba(36,39,30,.05); }
+    .nav { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 36px; }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 190px; }
+    .brand img { width: 74px; height: 52px; object-fit: contain; }
+    .brand__name { display: flex; flex-direction: column; gap: 3px; }
+    .brand__name strong { font-family: var(--serif); font-size: 19px; letter-spacing: -.035em; font-weight: 500; color: var(--olive); line-height: 1; }
+    .brand__name span { font-size: 8px; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+    .nav__links { display: flex; align-items: center; gap: clamp(22px, 3.5vw, 48px); margin-left: auto; }
+    .nav__links a { position: relative; padding: 10px 0; color: #57594f; font-size: 11px; font-weight: 600; transition: color .25s; }
+    .nav__links a::after { content: ""; position: absolute; left: 0; bottom: 3px; width: 100%; height: 1px; background: var(--copper); transform: scaleX(0); transform-origin: right; transition: transform .35s var(--ease); }
+    .nav__links a:hover { color: var(--copper); }
+    .nav__links a:hover::after { transform: scaleX(1); transform-origin: left; }
+    .nav__cta { display: inline-flex; align-items: center; gap: 13px; padding: 13px 18px; border: 1px solid rgba(45,58,46,.28); border-radius: 99px; font-size: 10px; font-weight: 700; color: var(--olive); transition: background .3s, color .3s, border .3s; white-space: nowrap; }
+    .nav__cta:hover { background: var(--olive); border-color: var(--olive); color: var(--paper); }
+    .nav__cta svg { width: 13px; height: 13px; }
+    .menu-toggle { display: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: var(--olive); align-items: center; justify-content: center; cursor: pointer; }
+
+    /* Hero */
+    .hero { position: relative; min-height: 820px; padding: 158px 0 92px; overflow: hidden; isolation: isolate; }
+    .hero::before { content: ""; position: absolute; z-index: -2; width: 660px; height: 660px; border-radius: 50%; right: -230px; top: 85px; background: radial-gradient(circle, rgba(223,228,216,.85) 0, rgba(223,228,216,.38) 42%, transparent 70%); }
+    .hero__grid { display: grid; grid-template-columns: minmax(0, .95fr) minmax(440px, 1.05fr); align-items: center; gap: clamp(38px, 7vw, 108px); }
+    .hero__copy { position: relative; z-index: 2; padding: 26px 0 42px; }
+    .hero__copy .eyebrow { margin-bottom: 28px; }
+    .hero h1 { max-width: 620px; margin: 0; font-size: clamp(62px, 7.1vw, 104px); color: var(--olive); }
+    .hero h1 em { color: var(--copper); font-style: italic; font-weight: 400; }
+    .hero__lead { max-width: 440px; margin: 28px 0 0; font-size: 14px; line-height: 1.9; color: #696b60; }
+    .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 34px; }
+    .btn { min-height: 52px; display: inline-flex; align-items: center; justify-content: center; gap: 16px; padding: 0 23px; border-radius: 99px; border: 1px solid transparent; cursor: pointer; font-size: 10px; font-weight: 700; letter-spacing: .04em; transition: transform .3s var(--ease), background .3s, color .3s, border .3s; }
+    .btn:hover { transform: translateY(-3px); }
+    .btn--dark { background: var(--olive); color: var(--paper); }
+    .btn--dark:hover { background: #435542; }
+    .btn--line { border-color: rgba(45,58,46,.26); color: var(--olive); background: transparent; }
+    .btn--line:hover { border-color: var(--copper); color: var(--copper); }
+    .btn svg { width: 14px; height: 14px; }
+    .hero__note { display: flex; align-items: center; gap: 14px; margin-top: 58px; color: #8c8b80; font-size: 10px; letter-spacing: .04em; }
+    .hero__note-line { width: 45px; height: 1px; background: var(--copper-light); }
+    .hero__visual { position: relative; min-height: 550px; perspective: 1000px; }
+    .hero__photo-wrap { position: absolute; right: 5%; top: 0; width: 78%; height: 490px; border-radius: 48% 48% 12px 12px; overflow: hidden; background: #d9d6c9; box-shadow: var(--shadow); transform: rotate(2deg); }
+    .hero__photo-wrap::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(29,37,27,.30)); pointer-events: none; }
+    .hero__photo { width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); transition: transform 1.4s var(--ease); }
+    .hero__visual:hover .hero__photo { transform: scale(1.1); }
+    .hero__photo-label { position: absolute; z-index: 2; right: 14%; bottom: 27px; color: white; text-align: right; }
+    .hero__photo-label span { display: block; font-size: 9px; letter-spacing: .2em; text-transform: uppercase; opacity: .8; }
+    .hero__photo-label strong { display: block; margin-top: 6px; font-family: var(--serif); font-size: 27px; font-weight: 400; }
+    .hero__orb { position: absolute; left: 1%; top: 70px; width: 158px; height: 158px; border-radius: 50%; display: grid; place-items: center; text-align: center; background: var(--copper); color: #fff9ef; box-shadow: 0 18px 40px rgba(168,95,61,.25); transform: rotate(-12deg); }
+    .hero__orb::before { content: ""; position: absolute; inset: 9px; border: 1px solid rgba(255,249,239,.48); border-radius: 50%; }
+    .hero__orb span { max-width: 95px; font-family: var(--serif); font-size: 18px; line-height: 1.15; }
+    .hero__mini { position: absolute; left: 7%; bottom: 4px; width: 43%; height: 195px; padding: 9px; background: var(--paper); box-shadow: 0 18px 48px rgba(39,42,32,.14); transform: rotate(-6deg); border-radius: 5px; }
+    .hero__mini img { width: 100%; height: 100%; object-fit: cover; border-radius: 2px; }
+    .hero__stem { position: absolute; right: -2%; bottom: -38px; width: 125px; opacity: .55; transform: rotate(18deg); }
+    .hero__side-note { position: absolute; right: -7%; top: 50%; writing-mode: vertical-rl; text-transform: uppercase; letter-spacing: .23em; color: #929184; font-size: 8px; }
+    .hero__scroll { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 11px; color: #99978b; text-transform: uppercase; font-size: 8px; letter-spacing: .2em; }
+    .hero__scroll i { display: block; width: 1px; height: 30px; background: var(--copper-light); animation: scrollPulse 1.5s ease-in-out infinite; transform-origin: top; }
+    @keyframes scrollPulse { 0%,100% { transform: scaleY(.35); opacity: .45; } 50% { transform: scaleY(1); opacity: 1; } }
+
+    /* Brand story */
+    .story { position: relative; padding: 142px 0 136px; background: #f5ece2; overflow: hidden; }
+    .story::before { content: "N"; position: absolute; right: -16px; bottom: -210px; font-family: var(--serif); font-size: 620px; line-height: 1; color: rgba(45,58,46,.035); pointer-events: none; }
+    .story__top { display: grid; grid-template-columns: .7fr 1.3fr; gap: 9%; align-items: start; }
+    .story__label { padding-top: 12px; }
+    .story__label .section-kicker { display: block; margin-bottom: 18px; }
+    .story__label p { max-width: 220px; color: #89877a; font-size: 11px; line-height: 1.8; }
+    .story__headline { max-width: 790px; margin: 0; font-size: clamp(43px, 5.5vw, 74px); color: var(--olive); }
+    .story__headline em { color: var(--copper); font-style: italic; }
+    .story__body { display: grid; grid-template-columns: 1fr 1fr; gap: 8%; margin: 52px 0 0 26%; align-items: start; }
+    .story__body p { max-width: 390px; margin: 0; color: #686a5f; font-size: 13px; line-height: 2; }
+    .story__body p + p { padding-top: 12px; }
+    .story__values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 92px; }
+    .value-card { position: relative; min-height: 242px; padding: 28px 30px 26px; border: 1px solid rgba(45,58,46,.16); border-radius: 4px; transition: transform .45s var(--ease), background .35s, box-shadow .35s; }
+    .value-card:hover { transform: translateY(-8px); background: rgba(255,255,255,.45); box-shadow: 0 22px 50px rgba(39,42,32,.07); }
+    .value-card__number { font-family: var(--serif); color: var(--copper); font-size: 19px; }
+    .value-card h3 { margin: 38px 0 11px; font-family: var(--serif); font-size: 26px; font-weight: 400; color: var(--olive); letter-spacing: -.03em; }
+    .value-card p { max-width: 280px; margin: 0; color: #77776c; font-size: 11px; line-height: 1.8; }
+    .value-card__arrow { position: absolute; right: 25px; top: 26px; color: #aba99c; transition: transform .3s, color .3s; }
+    .value-card:hover .value-card__arrow { transform: translate(3px,-3px); color: var(--copper); }
+
+    /* Philosophy */
+    .philosophy { position: relative; padding: 138px 0 148px; color: var(--paper); background: var(--olive); overflow: hidden; }
+    .philosophy::before { content: ""; position: absolute; width: 660px; height: 660px; border: 1px solid rgba(248,245,238,.09); border-radius: 50%; top: -300px; right: -110px; box-shadow: 0 0 0 45px rgba(248,245,238,.018), 0 0 0 90px rgba(248,245,238,.015); }
+    .philosophy__head { display: flex; justify-content: space-between; align-items: end; gap: 40px; margin-bottom: 70px; }
+    .philosophy__head .section-kicker { color: #d4a27f; }
+    .philosophy__title { max-width: 720px; margin: 20px 0 0; font-size: clamp(48px, 6vw, 82px); }
+    .philosophy__title em { color: #d3a17c; font-style: italic; }
+    .philosophy__intro { max-width: 270px; margin: 0 0 9px; color: rgba(248,245,238,.62); font-size: 12px; line-height: 1.9; }
+    .philosophy__feature { display: grid; grid-template-columns: 1.04fr .96fr; gap: 7%; align-items: center; }
+    .philosophy__image { position: relative; min-height: 510px; border-radius: 44% 44% 5px 5px; overflow: hidden; background: #d8c9ad; }
+    .philosophy__image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+    .philosophy__image:hover img { transform: scale(1.06); }
+    .philosophy__image::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(18,29,19,.18), transparent 55%); }
+    .philosophy__seal { position: absolute; z-index: 2; left: 24px; bottom: 26px; width: 106px; height: 106px; display: grid; place-items: center; text-align: center; border-radius: 50%; background: var(--paper); color: var(--olive); transform: rotate(-10deg); }
+    .philosophy__seal span { max-width: 70px; font-family: var(--serif); font-size: 16px; line-height: 1.1; }
+    .principles { display: flex; flex-direction: column; }
+    .principle { display: grid; grid-template-columns: 42px 1fr; gap: 18px; padding: 26px 0 29px; border-bottom: 1px solid rgba(248,245,238,.18); transition: padding .35s var(--ease); }
+    .principle:first-child { border-top: 1px solid rgba(248,245,238,.18); }
+    .principle:hover { padding-left: 10px; }
+    .principle__index { padding-top: 5px; font-family: var(--serif); color: #d3a17c; font-size: 17px; }
+    .principle h3 { margin: 0 0 10px; color: #fbf8ef; font-family: var(--serif); font-size: 29px; font-weight: 400; letter-spacing: -.03em; }
+    .principle p { max-width: 380px; margin: 0; color: rgba(248,245,238,.62); font-size: 11px; line-height: 1.9; }
+    .philosophy__foot { display: flex; align-items: center; justify-content: space-between; gap: 22px; margin-top: 92px; padding-top: 23px; border-top: 1px solid rgba(248,245,238,.16); color: rgba(248,245,238,.55); font-size: 9px; text-transform: uppercase; letter-spacing: .17em; }
+    .philosophy__foot strong { color: #d3a17c; font-weight: 600; }
+
+    /* Contact */
+    .contact { position: relative; padding: 142px 0 126px; overflow: hidden; background: #f2e4d8; }
+    .contact::before { content: ""; position: absolute; width: 520px; height: 520px; top: -310px; left: -200px; border: 1px solid rgba(168,95,61,.22); border-radius: 50%; box-shadow: 0 0 0 35px rgba(168,95,61,.04), 0 0 0 70px rgba(168,95,61,.03); }
+    .contact__head { display: grid; grid-template-columns: 1fr .8fr; gap: 10%; align-items: end; margin-bottom: 64px; }
+    .contact__title { max-width: 720px; margin: 20px 0 0; font-size: clamp(51px, 6.3vw, 88px); color: var(--olive); }
+    .contact__title em { color: var(--copper); font-style: italic; }
+    .contact__intro { max-width: 350px; margin: 0 0 7px; color: #737064; font-size: 12px; line-height: 1.9; }
+    .contact__grid { display: grid; grid-template-columns: .78fr 1.22fr; gap: 8%; align-items: start; }
+    .contact__details { padding-top: 12px; }
+    .contact__details > p { max-width: 310px; margin: 0 0 37px; color: #777569; font-size: 12px; line-height: 1.9; }
+    .contact-item { display: flex; align-items: flex-start; gap: 15px; margin: 0 0 24px; }
+    .contact-item__icon { width: 38px; height: 38px; flex: 0 0 38px; display: grid; place-items: center; border: 1px solid rgba(45,58,46,.2); border-radius: 50%; color: var(--copper); }
+    .contact-item__icon svg { width: 15px; height: 15px; }
+    .contact-item small { display: block; margin: 2px 0 6px; color: #999486; text-transform: uppercase; letter-spacing: .16em; font-size: 8px; font-weight: 700; }
+    .contact-item strong { display: block; color: var(--olive); font-size: 12px; font-weight: 600; }
+    .contact__social { display: flex; gap: 9px; margin-top: 36px; }
+    .social-link { width: 37px; height: 37px; display: grid; place-items: center; border: 1px solid rgba(45,58,46,.22); border-radius: 50%; color: var(--olive); font-size: 9px; font-weight: 700; transition: background .3s, color .3s, transform .3s; }
+    .social-link:hover { background: var(--olive); color: var(--paper); transform: translateY(-3px); }
+    .social-link.is-placeholder { cursor: default; opacity: .62; }
+    .social-link.is-placeholder:hover { background: transparent; color: var(--olive); transform: none; }
+    .contact-form { position: relative; padding: 38px 40px 34px; background: #fbf9f4; box-shadow: 0 25px 65px rgba(50,44,33,.08); border-radius: 5px; }
+    .contact-form__top { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-bottom: 29px; }
+    .contact-form__top h3 { margin: 0; color: var(--olive); font-family: var(--serif); font-size: 30px; font-weight: 400; letter-spacing: -.035em; }
+    .contact-form__top span { color: #a29e91; font-size: 9px; text-transform: uppercase; letter-spacing: .13em; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 17px 16px; }
+    .field { display: flex; flex-direction: column; gap: 8px; }
+    .field--full { grid-column: 1 / -1; }
+    .field label { color: #77776c; text-transform: uppercase; letter-spacing: .12em; font-size: 8px; font-weight: 700; }
+    .field input, .field select, .field textarea { width: 100%; border: 0; border-bottom: 1px solid rgba(45,58,46,.2); border-radius: 0; outline: 0; background: transparent; color: var(--ink); padding: 10px 0 12px; font-size: 12px; transition: border .25s; }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--copper); }
+    .field input::placeholder, .field textarea::placeholder { color: #b0ac9f; }
+    .field select { color: #898679; appearance: auto; }
+    .field textarea { min-height: 74px; resize: vertical; }
+    .form-submit { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin-top: 26px; }
+    .form-submit small { max-width: 205px; color: #999486; font-size: 9px; line-height: 1.6; }
+    .form-submit .btn { min-width: 174px; }
+    .form-feedback { display: none; margin-top: 18px; padding: 13px 15px; border-left: 2px solid var(--copper); background: #f1ede4; color: var(--olive); font-size: 11px; line-height: 1.7; }
+    .form-feedback.is-visible { display: block; animation: fadeUp .35s var(--ease) both; }
+    .form-feedback button { margin-left: 7px; border: 0; background: none; color: var(--copper); cursor: pointer; font-weight: 700; text-decoration: underline; }
+
+    /* Footer */
+    .footer { padding: 34px 0 27px; background: #3f4935; color: rgba(248,245,238,.65); }
+    .footer__top { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding-bottom: 28px; border-bottom: 1px solid rgba(248,245,238,.14); }
+    .footer__brand { display: flex; align-items: center; gap: 15px; }
+    .footer__brand img { width: 76px; height: 49px; object-fit: contain; filter: brightness(1.1); }
+    .footer__brand strong { display: block; color: #f8f5ee; font-family: var(--serif); font-size: 20px; font-weight: 400; }
+    .footer__brand span { display: block; margin-top: 4px; text-transform: uppercase; letter-spacing: .16em; font-size: 8px; }
+    .footer__links { display: flex; gap: 28px; }
+    .footer__links a { font-size: 10px; transition: color .25s; }
+    .footer__links a:hover { color: #d3a17c; }
+    .footer__bottom { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 22px; font-size: 9px; color: rgba(248,245,238,.42); }
+    .footer__bottom strong { color: #d3a17c; font-weight: 500; }
+    .back-top { display: inline-flex; align-items: center; gap: 9px; }
+    .back-top svg { width: 12px; height: 12px; }
+
+    /* Motion */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .reveal--left { transform: translateX(-28px); }
+    .reveal--left.is-visible { transform: translateX(0); }
+    .reveal--right { transform: translateX(28px); }
+    .reveal--right.is-visible { transform: translateX(0); }
+    .delay-1 { transition-delay: .12s; }
+    .delay-2 { transition-delay: .24s; }
+    .delay-3 { transition-delay: .36s; }
+    .page-progress { position: fixed; z-index: 80; top: 0; left: 0; width: 100%; height: 2px; pointer-events: none; }
+    .page-progress span { display: block; width: 100%; height: 100%; background: var(--copper); transform: scaleX(0); transform-origin: left; }
+
+    @media (max-width: 1020px) {
+      .container { width: min(100% - 48px, var(--container)); }
+      .nav { min-height: 78px; }
+      .nav__links { gap: 20px; }
+      .nav__cta { padding: 12px 15px; }
+      .hero { min-height: 730px; padding-top: 140px; }
+      .hero__grid { grid-template-columns: .92fr 1.08fr; gap: 24px; }
+      .hero h1 { font-size: clamp(57px, 7vw, 78px); }
+      .hero__visual { min-height: 490px; }
+      .hero__photo-wrap { height: 430px; width: 83%; }
+      .hero__mini { height: 160px; }
+      .story__body { margin-left: 20%; }
+      .philosophy__image { min-height: 450px; }
+      .contact-form { padding: 32px; }
+    }
+    @media (max-width: 760px) {
+      html { scroll-padding-top: 75px; }
+      .container { width: calc(100% - 40px); }
+      .site-header { position: absolute; }
+      .nav { min-height: 72px; }
+      .brand { min-width: 0; gap: 8px; }
+      .brand img { width: 60px; height: 43px; }
+      .brand__name strong { font-size: 17px; }
+      .brand__name span { font-size: 7px; }
+      .menu-toggle { display: inline-flex; margin-left: auto; }
+      .nav__cta { display: none; }
+      .nav__links { position: absolute; top: calc(100% + 1px); left: 0; right: 0; display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 9px 22px 16px; background: rgba(248,245,238,.98); border-bottom: 1px solid var(--line); box-shadow: 0 18px 28px rgba(39,42,32,.08); opacity: 0; visibility: hidden; transform: translateY(-8px); transition: opacity .25s, transform .25s, visibility .25s; }
+      .nav__links.is-open { opacity: 1; visibility: visible; transform: translateY(0); }
+      .nav__links a { padding: 14px 0; border-bottom: 1px solid rgba(45,58,46,.09); font-size: 12px; }
+      .nav__links a:last-child { border-bottom: 0; }
+      .hero { min-height: auto; padding: 124px 0 76px; }
+      .hero__grid { display: flex; flex-direction: column; align-items: stretch; gap: 25px; }
+      .hero__copy { padding: 15px 0 0; }
+      .hero__copy .eyebrow { margin-bottom: 22px; }
+      .hero h1 { max-width: 560px; font-size: clamp(55px, 13.2vw, 78px); line-height: .99; }
+      .hero__lead { max-width: 500px; margin-top: 21px; font-size: 13px; }
+      .hero__actions { margin-top: 25px; }
+      .btn { min-height: 49px; padding-inline: 18px; }
+      .hero__note { margin-top: 30px; }
+      .hero__visual { min-height: min(112vw, 500px); margin: 5px 0 0; }
+      .hero__photo-wrap { right: 5%; width: 78%; height: 94%; max-height: 450px; }
+      .hero__orb { left: 0; top: 10%; width: 116px; height: 116px; }
+      .hero__orb span { max-width: 75px; font-size: 14px; }
+      .hero__mini { left: 2%; bottom: 0; width: 42%; height: 33%; }
+      .hero__stem, .hero__side-note { display: none; }
+      .hero__scroll { bottom: 18px; }
+      .story { padding: 94px 0 90px; }
+      .story__top { display: block; }
+      .story__label { margin-bottom: 24px; }
+      .story__label p { max-width: 310px; margin-bottom: 0; }
+      .story__headline { font-size: clamp(43px, 10vw, 62px); }
+      .story__body { display: block; margin: 29px 0 0; }
+      .story__body p { font-size: 12px; }
+      .story__body p + p { margin-top: 14px; }
+      .story__values { grid-template-columns: 1fr; gap: 10px; margin-top: 43px; }
+      .value-card { min-height: 190px; padding: 23px 24px; }
+      .value-card h3 { margin-top: 22px; font-size: 25px; }
+      .value-card p { max-width: 450px; }
+      .philosophy { padding: 94px 0 92px; }
+      .philosophy__head { display: block; margin-bottom: 42px; }
+      .philosophy__title { font-size: clamp(46px, 10vw, 66px); }
+      .philosophy__intro { margin-top: 22px; max-width: 440px; }
+      .philosophy__feature { grid-template-columns: 1fr; gap: 34px; }
+      .philosophy__image { min-height: 112vw; max-height: 470px; border-radius: 46% 46% 5px 5px; }
+      .principle { padding: 23px 0 25px; }
+      .principle h3 { font-size: 26px; }
+      .philosophy__foot { margin-top: 48px; font-size: 8px; line-height: 1.8; }
+      .contact { padding: 94px 0 90px; }
+      .contact__head { display: block; margin-bottom: 40px; }
+      .contact__title { font-size: clamp(48px, 11vw, 68px); }
+      .contact__intro { margin-top: 22px; }
+      .contact__grid { grid-template-columns: 1fr; gap: 37px; }
+      .contact__details > p { margin-bottom: 25px; }
+      .contact__social { margin-top: 26px; }
+      .contact-form { padding: 26px 22px 24px; }
+      .contact-form__top { align-items: flex-start; flex-direction: column; gap: 8px; margin-bottom: 22px; }
+      .contact-form__top h3 { font-size: 27px; }
+      .form-grid { grid-template-columns: 1fr; gap: 15px; }
+      .field--full { grid-column: auto; }
+      .form-submit { align-items: stretch; flex-direction: column; }
+      .form-submit small { max-width: 100%; order: 2; }
+      .form-submit .btn { width: 100%; }
+      .footer__top { align-items: flex-start; flex-direction: column; }
+      .footer__links { flex-wrap: wrap; gap: 16px 23px; }
+      .footer__bottom { align-items: flex-start; flex-direction: column; }
+    }
+    @media (max-width: 390px) {
+      .container { width: calc(100% - 32px); }
+      .hero h1 { font-size: 53px; }
+      .hero__actions { gap: 9px; }
+      .hero__actions .btn { width: 100%; }
+      .hero__visual { min-height: 390px; }
+      .hero__orb { width: 100px; height: 100px; }
+      .hero__orb span { font-size: 13px; }
+      .philosophy__foot { align-items: flex-start; flex-direction: column; }
+    }
+
+
+    /* Brand refresh + responsive repair */
+    .site-header { border-bottom-color: rgba(111, 65, 42, .12); }
+    .site-header.is-sticky { background: rgba(255, 249, 242, .96); }
+    .hero::before { background: radial-gradient(circle, rgba(224,84,51,.10) 0, rgba(240,163,109,.12) 42%, transparent 72%); }
+    .story::before { color: rgba(224,84,51,.035); }
+    .value-card { background: rgba(255,255,255,.28); border-color: rgba(117,76,52,.18); border-radius: 14px; }
+    .philosophy { background: #46503a; }
+    .philosophy__head .section-kicker, .philosophy__title em { color: #f2a17f; }
+    .philosophy__image { border-radius: 28px; }
+    .philosophy__image img { object-position: center; }
+    .contact { background: #f3e6d9; }
+    .contact-form { border-radius: 18px; }
+    .footer { background: #3f4935; }
+    .btn--dark { background: var(--copper); color: #fffaf5; }
+    .btn--dark:hover { background: #c94c30; }
+    .btn--line { border-color: rgba(224,84,51,.4); color: #a4432a; }
+    .nav__cta { border-color: rgba(224,84,51,.4); color: #a4432a; }
+    .nav__cta:hover { background: var(--copper); border-color: var(--copper); color: #fffaf5; }
+    .value-card__arrow { display: none !important; }
+    .nav__cta svg, .btn svg, .back-top svg { display: none !important; }
+    .field select { background-image: none !important; }
+    .container, .nav, .hero__grid, .story__top, .story__body, .story__values,
+    .philosophy__head, .philosophy__feature, .contact__head, .contact__grid,
+    .contact-form, .form-grid, .footer__top, .footer__bottom { min-width: 0; }
+    html, body { max-width: 100%; overflow-x: clip; }
+    img { height: auto; }
+
+    @media (min-width: 761px) and (max-width: 1020px) {
+      .hero { min-height: auto; padding-bottom: 96px; }
+      .hero__grid { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 26px; }
+      .hero h1 { font-size: clamp(54px, 6.4vw, 68px); }
+      .hero__visual { min-height: 440px; }
+      .hero__photo-wrap { width: 88%; height: 410px; }
+      .story__values { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .story__values .value-card:last-child { grid-column: 1 / -1; }
+      .philosophy__feature { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 5%; }
+      .philosophy__image { min-height: 430px; }
+      .contact__grid { gap: 5%; }
+      .contact-form { padding: 28px; }
+    }
+
+    @media (max-width: 760px) {
+      html { scroll-padding-top: 76px; }
+      body { font-size: 14px; }
+      .container { width: calc(100% - 36px); }
+      .site-header { position: absolute; width: 100%; }
+      .site-header.is-sticky { position: fixed; }
+      .nav { min-height: 70px; gap: 10px; }
+      .brand { gap: 8px; min-width: 0; max-width: calc(100% - 58px); }
+      .brand img { width: 55px; height: 40px; flex: 0 0 55px; }
+      .brand__name { min-width: 0; }
+      .brand__name strong { font-size: 16px; }
+      .brand__name span { font-size: 6.5px; letter-spacing: .12em; }
+      .menu-toggle { width: 42px; height: 42px; flex: 0 0 42px; border-color: rgba(224,84,51,.35); }
+      .nav__links { top: 100%; left: 0; right: 0; width: 100%; padding: 8px 18px 14px; border: 1px solid rgba(117,76,52,.12); border-top: 0; border-radius: 0 0 16px 16px; background: rgba(255,249,242,.99); box-shadow: 0 16px 28px rgba(66,46,33,.10); }
+      .nav__links a { min-height: 46px; display: flex; align-items: center; padding: 10px 2px; color: #4b493c; font-size: 13px; }
+      .hero { min-height: 0; padding: 112px 0 64px; }
+      .hero__grid { display: flex; flex-direction: column; align-items: stretch; gap: 26px; }
+      .hero__copy { padding: 8px 0 0; }
+      .hero__copy .eyebrow { margin-bottom: 18px; font-size: 9px; letter-spacing: .12em; }
+      .eyebrow::before { width: 19px; }
+      .hero h1 { max-width: 100%; font-size: clamp(45px, 12.2vw, 60px); line-height: 1.02; letter-spacing: -.045em; overflow-wrap: normal; }
+      .hero__lead { max-width: 100%; margin-top: 18px; font-size: 13px; line-height: 1.75; }
+      .hero__actions { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 22px; }
+      .hero__actions .btn { width: 100%; }
+      .btn { min-height: 48px; padding: 0 18px; font-size: 12px; }
+      .hero__note { align-items: flex-start; gap: 9px; margin-top: 21px; font-size: 9px; line-height: 1.5; }
+      .hero__note-line { flex: 0 0 24px; margin-top: 6px; }
+      .hero__visual { position: relative; width: 100%; height: auto; min-height: 0; aspect-ratio: 1.22 / 1; margin: 0; perspective: none; }
+      .hero__photo-wrap { position: absolute; inset: 0; width: 100%; height: 100%; max-height: none; right: auto; top: auto; border-radius: 24px; transform: none; box-shadow: 0 18px 44px rgba(70,48,32,.16); }
+      .hero__photo { width: 100%; height: 100%; object-fit: cover; object-position: center; transform: none; }
+      .hero__photo-wrap::after { background: linear-gradient(180deg, rgba(25,27,20,.02) 34%, rgba(35,25,18,.55)); }
+      .hero__photo-label { right: 16px; bottom: 16px; left: 16px; text-align: left; }
+      .hero__photo-label span { font-size: 8px; letter-spacing: .14em; }
+      .hero__photo-label strong { margin-top: 4px; font-size: 23px; }
+      .hero__orb { z-index: 3; left: 12px; top: 12px; width: auto; height: auto; min-height: 0; padding: 10px 14px; border-radius: 999px; box-shadow: 0 9px 20px rgba(80,42,25,.18); }
+      .hero__orb span { max-width: none; font-family: var(--sans); font-size: 10px; font-weight: 700; line-height: 1.2; }
+      .hero__mini, .hero__stem, .hero__side-note, .hero__scroll { display: none !important; }
+      .story { padding: 78px 0 76px; }
+      .story::before { display: none; }
+      .story__top { display: block; }
+      .story__label { padding-top: 0; margin-bottom: 20px; }
+      .story__label .section-kicker { margin-bottom: 10px; }
+      .story__label p { max-width: 100%; margin: 0; font-size: 11px; }
+      .story__headline { max-width: 100%; font-size: clamp(37px, 10vw, 51px); line-height: 1.04; letter-spacing: -.045em; }
+      .story__body { display: block; margin: 22px 0 0; }
+      .story__body p { max-width: 100%; font-size: 13px; line-height: 1.8; }
+      .story__body p + p { padding-top: 0; margin-top: 12px; }
+      .story__values { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 30px; }
+      .value-card { min-height: 0; padding: 18px 19px; border-radius: 13px; }
+      .value-card__number { font-size: 15px; }
+      .value-card h3 { margin: 10px 0 6px; font-size: 22px; }
+      .value-card p { max-width: 100%; font-size: 12px; line-height: 1.7; }
+      .value-card:hover { transform: none; box-shadow: none; }
+      .philosophy { padding: 78px 0 78px; }
+      .philosophy::before { width: 300px; height: 300px; right: -180px; top: -140px; box-shadow: 0 0 0 24px rgba(255,249,242,.025); }
+      .philosophy__head { display: block; margin-bottom: 30px; }
+      .philosophy__head .section-kicker { font-size: 9px; }
+      .philosophy__title { max-width: 100%; margin-top: 14px; font-size: clamp(39px, 10.4vw, 54px); line-height: 1.04; }
+      .philosophy__intro { max-width: 100%; margin: 17px 0 0; font-size: 12px; line-height: 1.8; }
+      .philosophy__feature { display: grid; grid-template-columns: 1fr; gap: 24px; }
+      .philosophy__image { width: 100%; min-height: 0; height: auto; aspect-ratio: 1.06 / 1; max-height: none; border-radius: 22px; }
+      .philosophy__image img { object-fit: cover; object-position: 58% center; }
+      .philosophy__image::after { background: linear-gradient(0deg, rgba(18,29,19,.20), transparent 45%); }
+      .philosophy__seal { left: 14px; bottom: 14px; width: 84px; height: 84px; }
+      .philosophy__seal span { font-size: 12px; }
+      .principle { grid-template-columns: 30px minmax(0,1fr); gap: 12px; padding: 18px 0 20px; }
+      .principle__index { padding-top: 3px; font-size: 15px; }
+      .principle h3 { margin-bottom: 6px; font-size: 22px; line-height: 1.2; }
+      .principle p { max-width: 100%; font-size: 12px; line-height: 1.75; }
+      .principle:hover { padding-left: 0; }
+      .philosophy__foot { align-items: flex-start; flex-direction: column; gap: 7px; margin-top: 31px; padding-top: 17px; font-size: 8px; letter-spacing: .11em; line-height: 1.7; }
+      .contact { padding: 78px 0 76px; }
+      .contact::before { width: 300px; height: 300px; top: -220px; left: -190px; box-shadow: 0 0 0 22px rgba(224,84,51,.035); }
+      .contact__head { display: block; margin-bottom: 30px; }
+      .contact__title { max-width: 100%; margin-top: 13px; font-size: clamp(40px, 10.5vw, 55px); line-height: 1.04; }
+      .contact__intro { max-width: 100%; margin: 17px 0 0; font-size: 12px; line-height: 1.8; }
+      .contact__grid { display: grid; grid-template-columns: minmax(0,1fr); gap: 27px; }
+      .contact__details { padding-top: 0; }
+      .contact__details > p { max-width: 100%; margin-bottom: 20px; font-size: 12px; line-height: 1.8; }
+      .contact-item { gap: 12px; margin-bottom: 17px; }
+      .contact-item__icon { width: 36px; height: 36px; flex-basis: 36px; }
+      .contact-item small { font-size: 8px; }
+      .contact-item strong { overflow-wrap: anywhere; font-size: 12px; }
+      .contact__social { gap: 10px; margin-top: 22px; }
+      .contact-form { width: 100%; padding: 22px 18px 20px; border-radius: 16px; box-shadow: 0 14px 36px rgba(50,44,33,.08); }
+      .contact-form__top { display: block; margin-bottom: 20px; }
+      .contact-form__top h3 { font-size: 25px; line-height: 1.16; }
+      .contact-form__top span { display: none; }
+      .form-grid { display: grid; grid-template-columns: minmax(0,1fr); gap: 15px; }
+      .field, .field--full { grid-column: auto; min-width: 0; }
+      .field label { font-size: 9px; letter-spacing: .1em; }
+      .field input, .field select, .field textarea { min-width: 0; min-height: 46px; padding: 10px 0; font-size: 16px; }
+      .field textarea { min-height: 94px; }
+      .form-submit { display: flex; align-items: stretch; flex-direction: column; gap: 13px; margin-top: 20px; }
+      .form-submit small { max-width: 100%; order: 2; font-size: 10px; line-height: 1.65; }
+      .form-submit .btn { width: 100%; min-width: 0; }
+      .form-feedback { overflow-wrap: anywhere; font-size: 12px; }
+      .footer { padding: 27px 0 24px; }
+      .footer__top { align-items: flex-start; flex-direction: column; gap: 20px; padding-bottom: 21px; }
+      .footer__brand { gap: 12px; }
+      .footer__brand img { width: 65px; height: 43px; }
+      .footer__links { display: flex; flex-wrap: wrap; gap: 12px 20px; }
+      .footer__links a { font-size: 11px; }
+      .footer__bottom { display: flex; align-items: flex-start; flex-direction: column; gap: 11px; padding-top: 17px; font-size: 10px; line-height: 1.7; }
+      .back-top { font-size: 10px; }
+      .intro__content { width: min(310px, 78vw); }
+      .intro__orbit { width: 220px; height: 145px; }
+      .intro__line { margin-top: 20px; }
+      .intro__caption { font-size: 8px; letter-spacing: .17em; }
+      .reveal { transform: translateY(18px); transition-duration: .65s; }
+      .reveal--left, .reveal--right { transform: translateY(18px); }
+      .reveal.is-visible, .reveal--left.is-visible, .reveal--right.is-visible { transform: translateY(0); }
+    }
+
+    @media (max-width: 390px) {
+      .container { width: calc(100% - 30px); }
+      .hero { padding-top: 106px; }
+      .hero h1 { font-size: clamp(43px, 12vw, 49px); }
+      .hero__visual { aspect-ratio: 1.12 / 1; }
+      .hero__photo-label strong { font-size: 20px; }
+      .brand img { width: 50px; height: 37px; flex-basis: 50px; }
+      .brand__name strong { font-size: 15px; }
+      .story__headline { font-size: 37px; }
+      .contact__title { font-size: 40px; }
+    }
+
+    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 2px solid var(--copper); outline-offset: 3px; }
+    @media (hover: none) and (pointer: coarse) { .value-card:hover, .principle:hover, .btn:hover { transform: none; } }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body class="is-loading">
+  <div class="page-progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+  <div class="intro" id="intro" aria-label="Nut Paradise intro">
+    <div class="intro__grain"></div>
+    <div class="intro__content">
+      <div class="intro__orbit"></div>
+      <img class="intro__logo" src="assets/nut-paradise-logo.png" alt="Nut Paradise" />
+      <div class="intro__line"></div>
+      <div class="intro__caption">Hạt dinh dưỡng cho cuộc sống tốt lành</div>
+    </div>
+  </div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Nut Paradise — về đầu trang">
+        <img src="assets/nut-paradise-logo.png" alt="Logo Nut Paradise" />
+        <span class="brand__name"><strong>Nut Paradise</strong><span>Nature in every bite</span></span>
+      </a>
+      <nav class="nav__links" id="navLinks" aria-label="Điều hướng chính">
+        <a href="#about">Về chúng tôi</a>
+        <a href="#philosophy">Phong cách</a>
+        <a href="#contact">Kết nối</a>
+      </nav>
+      <a class="nav__cta" href="#contact">Kết nối cùng chúng tôi
+      </a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Mở menu" aria-expanded="false" aria-controls="navLinks">
+        <svg viewBox="0 0 20 20" width="18" height="18" fill="none" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- 01 / About -->
+    <section class="hero" id="about">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <span class="eyebrow reveal">Công Ty TNHH Nut Paradise</span>
+          <h1 class="display reveal delay-1">Điều lành<br/>từ những<br/><em>hạt nhỏ.</em></h1>
+          <p class="hero__lead reveal delay-2">Nut Paradise là đại lý phân phối các dòng hạt dinh dưỡng tuyển chọn — nơi những giá trị tự nhiên được trân trọng và đưa vào nhịp sống hiện đại một cách tinh tế.</p>
+          <div class="hero__actions reveal delay-3">
+            <a class="btn btn--dark" href="#philosophy">Khám phá phong cách
+            </a>
+            <a class="btn btn--line" href="#contact">Dành cho đối tác</a>
+          </div>
+          <div class="hero__note reveal delay-3"><span class="hero__note-line"></span><span>Dinh dưỡng tự nhiên · Lựa chọn có ý thức</span></div>
+        </div>
+        <div class="hero__visual reveal reveal--right" id="heroVisual">
+          <div class="hero__photo-wrap" data-parallax="0.035">
+            <img class="hero__photo" src="assets/nuts-hero.webp" alt="Các loại hạt dinh dưỡng gồm hạt điều, hạnh nhân, hạt dẻ cười và óc chó" fetchpriority="high" />
+            <div class="hero__photo-label"><span>Nut Paradise tuyển chọn</span><strong>Trọn vị tự nhiên.</strong></div>
+          </div>
+          <div class="hero__orb" data-parallax="-0.045"><span>Hạt ngon<br/>mỗi ngày</span></div>
+          <div class="hero__mini" data-parallax="0.065"><img src="assets/nuts-almond-pistachio.webp" alt="Hạnh nhân và hạt dẻ cười được tuyển chọn" loading="lazy" /></div>
+          <div class="hero__side-note">From nature · For everyday living</div>
+          <svg class="hero__stem" viewBox="0 0 130 190" fill="none" aria-hidden="true"><path d="M63 184C67 126 66 68 104 10M66 123C40 99 22 93 10 61c29 3 48 19 56 45ZM82 78c3-29 18-45 39-55 2 26-10 46-39 55ZM67 151c-19-19-35-25-54-23 10 23 26 32 54 23Z" stroke="#8c967d" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <div class="hero__scroll" aria-hidden="true"><i></i><span>Scroll to discover</span></div>
+    </section>
+
+    <!-- About continuation / brand promise -->
+    <section class="story" aria-labelledby="storyTitle">
+      <div class="container">
+        <div class="story__top">
+          <div class="story__label reveal reveal--left">
+            <span class="section-kicker">01 / Our purpose</span>
+            <p>Mang nguồn dinh dưỡng gần gũi với thiên nhiên đến gần hơn với mỗi ngày sống.</p>
+          </div>
+          <h2 class="story__headline display reveal" id="storyTitle">Một lựa chọn nhỏ,<br/>cho <em>nếp sống tốt lành.</em></h2>
+        </div>
+        <div class="story__body">
+          <p class="reveal">Chúng tôi tin rằng chăm sóc bản thân không nhất thiết phải bắt đầu từ những điều lớn lao. Đôi khi, đó chỉ là lựa chọn một món ăn nhẹ lành mạnh, một nguyên liệu tốt hơn, hay một thói quen được duy trì mỗi ngày.</p>
+          <p class="reveal delay-1">Nut Paradise hướng đến vai trò cầu nối giữa những dòng hạt dinh dưỡng được tuyển chọn và người tiêu dùng hiện đại — với sự chỉn chu trong lựa chọn, cách giới thiệu và trải nghiệm.</p>
+        </div>
+        <div class="story__values">
+          <article class="value-card reveal">
+            <span class="value-card__number">01</span>
+            <h3>Từ thiên nhiên</h3>
+            <p>Đề cao giá trị nguyên bản và sự giản dị vốn có trong từng loại hạt.</p>
+          </article>
+          <article class="value-card reveal delay-1">
+            <span class="value-card__number">02</span>
+            <h3>Tuyển chọn tinh tế</h3>
+            <p>Chú trọng lựa chọn sản phẩm phù hợp với nhu cầu và phong cách sống hiện đại.</p>
+          </article>
+          <article class="value-card reveal delay-2">
+            <span class="value-card__number">03</span>
+            <h3>Trao gửi điều lành</h3>
+            <p>Lan tỏa cảm hứng ăn uống cân bằng qua những trải nghiệm gần gũi mỗi ngày.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 / Philosophy -->
+    <section class="philosophy" id="philosophy" aria-labelledby="philosophyTitle">
+      <div class="container">
+        <div class="philosophy__head">
+          <div>
+            <span class="section-kicker reveal">02 / Our philosophy</span>
+            <h2 class="philosophy__title display reveal delay-1" id="philosophyTitle">Chọn điều<br/>nguyên bản. <em>Sống<br/>thật tinh tế.</em></h2>
+          </div>
+          <p class="philosophy__intro reveal delay-2">Với Nut Paradise, dinh dưỡng không chỉ là điều cơ thể cần — mà còn là cách ta nâng niu bản thân qua những lựa chọn nhỏ, có chủ đích.</p>
+        </div>
+        <div class="philosophy__feature">
+          <div class="philosophy__image reveal reveal--left">
+            <img src="assets/nuts-walnut-cashew.webp" alt="Cận cảnh hạt óc chó, hạt điều và các loại hạt dinh dưỡng" loading="lazy" />
+            <div class="philosophy__seal"><span>Tự nhiên<br/>trong từng<br/>lựa chọn</span></div>
+          </div>
+          <div class="principles">
+            <article class="principle reveal">
+              <span class="principle__index">01</span><div><h3>Tuyển chọn khắt khe</h3><p>Mỗi lựa chọn đều bắt đầu từ sự quan tâm đến chất lượng, nguồn gốc và sự phù hợp với trải nghiệm mà khách hàng mong đợi.</p></div>
+            </article>
+            <article class="principle reveal delay-1">
+              <span class="principle__index">02</span><div><h3>Tôn trọng sự nguyên bản</h3><p>Trân trọng hương vị, kết cấu và giá trị tự nhiên của hạt; ưu tiên sự chân thật thay vì những điều phô trương.</p></div>
+            </article>
+            <article class="principle reveal delay-2">
+              <span class="principle__index">03</span><div><h3>Chỉn chu trong trải nghiệm</h3><p>Từ cách giới thiệu đến đóng gói, mọi điểm chạm đều hướng đến cảm giác tinh tế, dễ chịu và đáng tin cậy.</p></div>
+            </article>
+            <article class="principle reveal delay-3">
+              <span class="principle__index">04</span><div><h3>Đưa điều lành vào mỗi ngày</h3><p>Biến thói quen ăn lành mạnh thành một niềm vui giản dị — đủ đẹp để tận hưởng, đủ gần để duy trì.</p></div>
+            </article>
+          </div>
+        </div>
+        <div class="philosophy__foot reveal"><span>Nut Paradise <strong>·</strong> Nature-led living</span><span>Good choices become good habits.</span></div>
+      </div>
+    </section>
+
+    <!-- 03 / Contact -->
+    <section class="contact" id="contact" aria-labelledby="contactTitle">
+      <div class="container">
+        <div class="contact__head">
+          <div>
+            <span class="section-kicker reveal">03 / Let’s connect</span>
+            <h2 class="contact__title display reveal delay-1" id="contactTitle">Cùng nhau<br/>ươm mầm <em>điều lành.</em></h2>
+          </div>
+          <p class="contact__intro reveal delay-2">Dù bạn là khách hàng đang tìm kiếm lựa chọn dinh dưỡng phù hợp, hay đối tác muốn cùng phát triển — Nut Paradise luôn sẵn sàng lắng nghe và kết nối.</p>
+        </div>
+        <div class="contact__grid">
+          <div class="contact__details reveal reveal--left">
+            <p>Hãy để lại lời nhắn. Chúng tôi sẽ có thêm thông tin để kết nối với bạn về nhu cầu phân phối, hợp tác hoặc sản phẩm.</p>
+            <div class="contact-item">
+              <span class="contact-item__icon"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5.5h14v9H3zM3.5 6l6.5 5 6.5-5" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></span>
+              <div><small>Email</small><strong data-contact="email">Thông tin đang cập nhật</strong></div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-item__icon"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M6.1 3.5 8 6.7 6.8 8.1c.9 1.8 2.3 3.2 5.1 5.1l1.4-1.2 3.2 1.9-.5 2.1c-.2.7-.9 1.1-1.6 1-6.5-1.1-10.3-4.9-11.4-11.4-.1-.7.3-1.4 1-1.6l2.1-.5Z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <div><small>Hotline</small><strong data-contact="phone">Thông tin đang cập nhật</strong></div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-item__icon"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 17s5.5-5.1 5.5-9.5a5.5 5.5 0 1 0-11 0C4.5 11.9 10 17 10 17Z" stroke="currentColor" stroke-width="1.2"/><circle cx="10" cy="7.5" r="1.8" stroke="currentColor" stroke-width="1.2"/></svg></span>
+              <div><small>Khu vực hoạt động</small><strong data-contact="area">Vui lòng liên hệ để biết thêm</strong></div>
+            </div>
+            <div class="contact__social" aria-label="Mạng xã hội">
+              <a class="social-link" href="#contact" aria-label="Facebook" title="Cập nhật liên kết Facebook">f</a>
+              <a class="social-link" href="#contact" aria-label="Instagram" title="Cập nhật liên kết Instagram">ig</a>
+              <a class="social-link" href="#contact" aria-label="Zalo" title="Cập nhật liên kết Zalo">z</a>
+            </div>
+          </div>
+
+          <form class="contact-form reveal reveal--right" id="contactForm">
+            <div class="contact-form__top"><h3>Gửi lời nhắn đến chúng tôi</h3><span>We’d love to hear from you</span></div>
+            <div class="form-grid">
+              <div class="field"><label for="fullName">Họ và tên</label><input id="fullName" name="fullName" type="text" placeholder="Tên của bạn" autocomplete="name" required /></div>
+              <div class="field"><label for="phoneNumber">Số điện thoại</label><input id="phoneNumber" name="phoneNumber" type="tel" placeholder="Số điện thoại liên hệ" autocomplete="tel" required /></div>
+              <div class="field"><label for="emailAddress">Email</label><input id="emailAddress" name="emailAddress" type="email" placeholder="you@example.com" autocomplete="email" /></div>
+              <div class="field"><label for="interest">Bạn quan tâm đến</label><select id="interest" name="interest"><option value="Tìm hiểu sản phẩm">Tìm hiểu sản phẩm</option><option value="Hợp tác phân phối">Hợp tác phân phối</option><option value="Đối tác quán cà phê / nhà hàng">Đối tác quán cà phê / nhà hàng</option><option value="Đại lý / cửa hàng bán lẻ">Đại lý / cửa hàng bán lẻ</option><option value="Khác">Nội dung khác</option></select></div>
+              <div class="field field--full"><label for="message">Lời nhắn</label><textarea id="message" name="message" placeholder="Chia sẻ thêm nhu cầu của bạn..."></textarea></div>
+            </div>
+            <div class="form-submit">
+              <small>Các trường bắt buộc được dùng để chuẩn bị nội dung liên hệ. Form mẫu chưa kết nối máy chủ gửi dữ liệu.</small>
+              <button class="btn btn--dark" type="submit">Chuẩn bị lời nhắn
+              </button>
+            </div>
+            <div class="form-feedback" id="formFeedback" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <a class="footer__brand" href="#top">
+          <img src="assets/nut-paradise-logo.png" alt="Nut Paradise" />
+          <span><strong>Nut Paradise</strong><span>Nature in every bite</span></span>
+        </a>
+        <nav class="footer__links" aria-label="Điều hướng chân trang">
+          <a href="#about">Về chúng tôi</a><a href="#philosophy">Phong cách</a><a href="#contact">Kết nối</a>
+        </nav>
+      </div>
+      <div class="footer__bottom"><span>© <span id="year">2026</span> <strong>Công Ty TNHH Nut Paradise.</strong> All rights reserved.</span><a class="back-top" href="#top">Trở về đầu trang</a></div>
+    </div>
+  </footer>
+
+  <script>
+    // Cập nhật thông tin thật của doanh nghiệp tại đây trước khi đưa website lên hosting.
+    // Để trống một trường nếu chưa có thông tin xác nhận.
+    const CONTACT_CONFIG = {
+      email: "",
+      phone: "",
+      area: "",
+      facebook: "",
+      instagram: "",
+      zalo: ""
+    };
+
+    const $ = (selector, scope = document) => scope.querySelector(selector);
+    const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
+
+    // Splash intro: tự động khép lại, có hỗ trợ reduced-motion.
+    const intro = $("#intro");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.addEventListener("load", () => {
+      window.setTimeout(() => {
+        intro.classList.add("is-done");
+        document.body.classList.remove("is-loading");
+      }, reducedMotion ? 250 : 2100);
+    });
+    // Fallback khi ảnh ngoài tải chậm hoặc không có sự kiện load.
+    window.setTimeout(() => {
+      intro.classList.add("is-done");
+      document.body.classList.remove("is-loading");
+    }, 4500);
+
+    // Sticky header, scroll progress and reveal on scroll.
+    const header = $("#siteHeader");
+    const progressBar = $("#progressBar");
+    const onScroll = () => {
+      const y = window.scrollY;
+      header.classList.toggle("is-sticky", y > 28);
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -35px 0px" });
+    $$(".reveal").forEach(el => revealObserver.observe(el));
+
+    // Mobile navigation; close after a section is selected.
+    const menuToggle = $("#menuToggle");
+    const navLinks = $("#navLinks");
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("is-open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute("aria-label", isOpen ? "Đóng menu" : "Mở menu");
+    });
+    $$("#navLinks a").forEach(link => link.addEventListener("click", () => {
+      navLinks.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-label", "Mở menu");
+    }));
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && navLinks.classList.contains("is-open")) {
+        navLinks.classList.remove("is-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Mở menu");
+        menuToggle.focus();
+      }
+    });
+
+    // Subtle desktop-only cursor parallax, disabled on touch and reduced motion.
+    const heroVisual = $("#heroVisual");
+    if (heroVisual && !reducedMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      const layers = $$('[data-parallax]', heroVisual);
+      heroVisual.addEventListener("pointermove", event => {
+        const rect = heroVisual.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - .5;
+        const y = (event.clientY - rect.top) / rect.height - .5;
+        layers.forEach(layer => {
+          const depth = Number(layer.dataset.parallax || 0);
+          layer.style.transform = `translate3d(${x * depth * 210}px, ${y * depth * 210}px, 0) ${layer === layers[0] ? "rotate(2deg)" : ""}`;
+        });
+      });
+      heroVisual.addEventListener("pointerleave", () => {
+        layers.forEach(layer => layer.style.transform = "");
+      });
+    }
+
+    // Hydrate contact information only from explicitly configured business details.
+    const textMap = { email: CONTACT_CONFIG.email, phone: CONTACT_CONFIG.phone, area: CONTACT_CONFIG.area };
+    Object.entries(textMap).forEach(([key, value]) => {
+      const node = $(`[data-contact="${key}"]`);
+      if (node && value.trim()) node.textContent = value;
+    });
+    const socialMap = { facebook: CONTACT_CONFIG.facebook, instagram: CONTACT_CONFIG.instagram, zalo: CONTACT_CONFIG.zalo };
+    const socialKeys = ["facebook", "instagram", "zalo"];
+    $$(".social-link").forEach((link, i) => {
+      const url = socialMap[socialKeys[i]];
+      if (url && /^https:\/\//i.test(url)) {
+        link.href = url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.title = `Mở ${socialKeys[i]}`;
+        link.classList.remove("is-placeholder");
+      } else {
+        link.classList.add("is-placeholder");
+        link.setAttribute("aria-disabled", "true");
+        link.addEventListener("click", event => event.preventDefault());
+      }
+    });
+
+    // Demo contact form: validate and prepare a message; no data is transmitted.
+    const form = $("#contactForm");
+    const feedback = $("#formFeedback");
+    form.addEventListener("submit", async event => {
+      event.preventDefault();
+      if (!form.reportValidity()) return;
+      const data = new FormData(form);
+      const message = [
+        "LIÊN HỆ NUT PARADISE",
+        `Họ và tên: ${data.get("fullName")}`,
+        `Số điện thoại: ${data.get("phoneNumber")}`,
+        `Email: ${data.get("emailAddress") || "Chưa cung cấp"}`,
+        `Nhu cầu: ${data.get("interest")}`,
+        `Lời nhắn: ${data.get("message") || "Không có"}`
+      ].join("\n");
+      if (CONTACT_CONFIG.email.trim()) {
+        const subject = encodeURIComponent("Liên hệ từ website Nut Paradise");
+        window.location.href = `mailto:${CONTACT_CONFIG.email}?subject=${subject}&body=${encodeURIComponent(message)}`;
+        feedback.textContent = "Đã mở ứng dụng email với nội dung liên hệ được chuẩn bị sẵn. Hãy kiểm tra và gửi email của bạn.";
+      } else {
+        try {
+          await navigator.clipboard.writeText(message);
+          feedback.textContent = "Lời nhắn đã được sao chép. Website hiện chưa cấu hình email nhận, bạn có thể gửi nội dung này qua kênh liên hệ chính thức của Nut Paradise.";
+        } catch (error) {
+          feedback.textContent = "Thông tin đã được kiểm tra. Website chưa cấu hình email nhận hoặc quyền sao chép; vui lòng cập nhật CONTACT_CONFIG trong mã nguồn để kích hoạt gửi liên hệ.";
+        }
+      }
+      feedback.classList.add("is-visible");
+    });
+
+    $("#year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
