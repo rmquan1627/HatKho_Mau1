@@ -741,6 +741,95 @@
       .site-header .nav__links { background: var(--paper); }
     }
 
+
+
+    /* Section background exchange requested on 19 Nov 2026:
+       01 Our purpose + 03 Contact use the olive from section 02;
+       02 Philosophy uses the warm cream from section 01. */
+    .story {
+      background: #3F4935 !important;
+      color: #FFF8ED;
+    }
+    .story::before { color: rgba(255, 248, 237, .035); }
+    .story .section-kicker { color: #F0B08F; }
+    .story__label p,
+    .story__body p { color: rgba(255, 248, 237, .72); }
+    .story__headline { color: #FFF8ED; }
+    .story__headline em { color: #F0A17F; }
+    .story .value-card {
+      background: rgba(255, 248, 237, .055);
+      border-color: rgba(255, 248, 237, .19);
+    }
+    .story .value-card:hover {
+      background: rgba(255, 248, 237, .11);
+      box-shadow: 0 22px 50px rgba(15, 22, 14, .16);
+    }
+    .story .value-card__number { color: #F0A17F; }
+    .story .value-card h3 { color: #FFF8ED; }
+    .story .value-card p { color: rgba(255, 248, 237, .68); }
+    .story .value-card__arrow { color: rgba(255, 248, 237, .55); }
+
+    .contact {
+      background: #3F4935 !important;
+      color: #FFF8ED;
+    }
+    .contact::before {
+      border-color: rgba(240, 161, 127, .20);
+      box-shadow: 0 0 0 35px rgba(240, 161, 127, .045),
+                  0 0 0 70px rgba(240, 161, 127, .025);
+    }
+    .contact .section-kicker { color: #F0B08F; }
+    .contact__title { color: #FFF8ED; }
+    .contact__title em { color: #F0A17F; }
+    .contact__intro,
+    .contact__details > p { color: rgba(255, 248, 237, .72); }
+    .contact-item__icon {
+      color: #F0A17F;
+      border-color: rgba(255, 248, 237, .28);
+    }
+    .contact-item small { color: rgba(255, 248, 237, .56); }
+    .contact-item strong { color: #FFF8ED; }
+    .social-link {
+      color: #FFF8ED;
+      border-color: rgba(255, 248, 237, .30);
+    }
+    .social-link:hover {
+      color: #FFF8ED;
+      background: var(--copper);
+      border-color: var(--copper);
+    }
+    .social-link.is-placeholder:hover {
+      color: #FFF8ED;
+      background: transparent;
+      border-color: rgba(255, 248, 237, .30);
+    }
+    /* Keep the contact form as a light panel for clear field contrast. */
+    .contact .contact-form { background: #FBF7EF; }
+
+    .philosophy {
+      background: #F0E6D8 !important;
+      color: var(--ink);
+    }
+    .philosophy::before {
+      border-color: rgba(63, 73, 53, .13);
+      box-shadow: 0 0 0 45px rgba(63, 73, 53, .025),
+                  0 0 0 90px rgba(63, 73, 53, .018);
+    }
+    .philosophy__head .section-kicker { color: var(--copper); }
+    .philosophy__title { color: var(--olive); }
+    .philosophy__title em { color: var(--copper); }
+    .philosophy__intro { color: #6F695E; }
+    .principle,
+    .principle:first-child { border-color: rgba(63, 73, 53, .19); }
+    .principle__index { color: var(--copper); }
+    .principle h3 { color: var(--olive); }
+    .principle p { color: #716B60; }
+    .philosophy__foot {
+      border-top-color: rgba(63, 73, 53, .19);
+      color: #777064;
+    }
+    .philosophy__foot strong { color: var(--copper); }
+
   </style>
 </head>
 <body class="is-loading">
