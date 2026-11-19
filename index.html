@@ -830,6 +830,205 @@
     }
     .philosophy__foot strong { color: var(--copper); }
 
+  
+
+    /* Final polish requested on 19 Nov 2026:
+       remove the header shadow and align the contact form with the olive section. */
+    .site-header,
+    .site-header.is-sticky {
+      box-shadow: none !important;
+    }
+
+    .contact .contact-form {
+      background: #F5EFE4;
+      border: 1px solid rgba(240, 161, 127, .28);
+      box-shadow: 0 18px 48px rgba(18, 25, 16, .13);
+    }
+    .contact .contact-form__top h3 {
+      color: #3F4935;
+    }
+    .contact .contact-form__top span {
+      color: #8C7967;
+    }
+    .contact .field label {
+      color: #596247;
+    }
+    .contact .field input,
+    .contact .field select,
+    .contact .field textarea {
+      color: #2D3028;
+      border-bottom-color: rgba(63, 73, 53, .25);
+      background: transparent;
+    }
+    .contact .field input::placeholder,
+    .contact .field textarea::placeholder {
+      color: #928879;
+      opacity: 1;
+    }
+    .contact .field select {
+      color: #746B5E;
+    }
+    .contact .field select option {
+      color: #2D3028;
+      background: #F5EFE4;
+    }
+    .contact .field input:focus,
+    .contact .field select:focus,
+    .contact .field textarea:focus {
+      border-bottom-color: #D9573D;
+    }
+    .contact .form-submit small {
+      color: #796F60;
+    }
+    .contact .contact-form .form-submit .btn,
+    .contact .contact-form .form-submit .btn--dark {
+      background: #D9573D;
+      border-color: #D9573D;
+      color: #FFF8ED;
+    }
+    .contact .contact-form .form-submit .btn:hover,
+    .contact .contact-form .form-submit .btn--dark:hover {
+      background: #B94732;
+      border-color: #B94732;
+      color: #FFF8ED;
+    }
+    .contact .contact-form .form-feedback {
+      background: #E9DFD0;
+      border-left-color: #D9573D;
+      color: #3F4935;
+    }
+    .contact .contact-form .form-feedback button {
+      color: #B94732;
+    }
+    .contact .contact-form :is(input, select, textarea, button):focus-visible {
+      outline-color: #D9573D;
+    }
+
+    @media (max-width: 760px) {
+      .site-header,
+      .site-header.is-sticky {
+        box-shadow: none !important;
+      }
+      .contact .contact-form {
+        background: #F5EFE4;
+      }
+    }
+
+
+
+    /* V7 — remove decorative drop shadows from the three content sections,
+       and blend the contact form into the same olive surface as section 03. */
+    .story,
+    .philosophy,
+    .contact,
+    .story *, .story *::before, .story *::after,
+    .philosophy *, .philosophy *::before, .philosophy *::after,
+    .contact *, .contact *::before, .contact *::after {
+      box-shadow: none !important;
+    }
+
+    .contact .contact-form {
+      background: #3F4935 !important;
+      color: #FFF8ED;
+      border: 1px solid rgba(255, 248, 237, .22);
+      border-radius: 18px;
+    }
+    .contact .contact-form__top h3 {
+      color: #FFF8ED !important;
+    }
+    .contact .contact-form__top span {
+      color: rgba(240, 176, 143, .88) !important;
+    }
+    .contact .field label {
+      color: #F0B08F !important;
+    }
+    .contact .field input,
+    .contact .field select,
+    .contact .field textarea {
+      color: #FFF8ED !important;
+      background: transparent !important;
+      border-bottom: 1px solid rgba(255, 248, 237, .32) !important;
+      caret-color: #F0A17F;
+    }
+    .contact .field input::placeholder,
+    .contact .field textarea::placeholder {
+      color: rgba(255, 248, 237, .58) !important;
+      opacity: 1;
+    }
+    .contact .field select {
+      color: #FFF8ED !important;
+      color-scheme: dark;
+    }
+    .contact .field select option {
+      color: #FFF8ED;
+      background: #3F4935;
+    }
+    .contact .field input:focus,
+    .contact .field select:focus,
+    .contact .field textarea:focus {
+      border-bottom-color: #F0A17F !important;
+      outline-color: #F0A17F;
+    }
+    .contact .form-submit small {
+      color: rgba(255, 248, 237, .65) !important;
+    }
+    .contact .contact-form .form-submit .btn,
+    .contact .contact-form .form-submit .btn--dark {
+      background: #D9573D !important;
+      border-color: #D9573D !important;
+      color: #FFF8ED !important;
+    }
+    .contact .contact-form .form-submit .btn:hover,
+    .contact .contact-form .form-submit .btn--dark:hover {
+      background: #C44932 !important;
+      border-color: #C44932 !important;
+      color: #FFF8ED !important;
+    }
+    .contact .contact-form .form-feedback {
+      background: rgba(255, 248, 237, .10) !important;
+      border-left-color: #F0A17F !important;
+      color: #FFF8ED !important;
+    }
+    .contact .contact-form .form-feedback button {
+      color: #F0A17F !important;
+    }
+    .contact .contact-form :is(input, select, textarea, button):focus-visible {
+      outline: 2px solid #F0A17F;
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 760px) {
+      .contact .contact-form {
+        background: #3F4935 !important;
+        border-radius: 16px;
+      }
+    }
+
+
+    /* V8 — definitive removal of header/nav shadows and the contact-card outline. */
+    .site-header,
+    .site-header *,
+    .site-header *::before,
+    .site-header *::after {
+      box-shadow: none !important;
+      filter: none !important;
+      text-shadow: none !important;
+    }
+    .site-header,
+    .site-header.is-sticky {
+      box-shadow: none !important;
+      filter: none !important;
+    }
+    .site-header .nav__links {
+      box-shadow: none !important;
+      filter: none !important;
+    }
+    .contact .contact-form {
+      border: 0 !important;
+      outline: 0 !important;
+      box-shadow: none !important;
+    }
+
   </style>
 </head>
 <body class="is-loading">
