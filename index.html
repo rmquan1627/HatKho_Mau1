@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#fff9f2" />
+  <meta name="theme-color" content="#F5EFE4" />
   <meta name="description" content="Nut Paradise — Công Ty TNHH Nut Paradise. Đại lý phân phối các dòng hạt dinh dưỡng tuyển chọn, mang nguồn dinh dưỡng tự nhiên đến cuộc sống hiện đại." />
   <title>Nut Paradise — Dinh dưỡng từ những điều nguyên bản</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -501,6 +501,246 @@
       *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
       .reveal { opacity: 1; transform: none; }
     }
+
+    /* Nut Paradise visual refinement — brand colors, consistent headings, hero overlap fix */
+    :root {
+      --paper: #F5EFE4;
+      --paper-deep: #EDE2D3;
+      --olive: #3F4935;
+      --olive-2: #5D6849;
+      --olive-soft: #E7E0D2;
+      --ink: #2D3028;
+      --muted: #766D60;
+      --copper: #D9573D;
+      --copper-light: #E99A72;
+      --line: rgba(63, 73, 53, .18);
+      --display-size: clamp(44px, 5.25vw, 68px);
+      --display-size-mobile: clamp(35px, 9vw, 47px);
+    }
+
+    html, body { background: var(--paper); color: var(--ink); }
+    body { background: var(--paper); }
+    .hero { background: var(--paper); }
+    .story { background: #F0E6D8; }
+    .contact { background: #EFE3D5; }
+    .philosophy, .footer { background: var(--olive); }
+
+    /* Deep olive header echoes the supplied brand lock-up */
+    .site-header {
+      background: var(--olive);
+      border-bottom: 1px solid rgba(255, 247, 235, .15);
+    }
+    .site-header.is-sticky {
+      background: rgba(63, 73, 53, .97);
+      border-bottom-color: rgba(255, 247, 235, .13);
+      box-shadow: 0 8px 28px rgba(25, 31, 23, .16);
+    }
+    .brand__name strong { color: #FFF8ED; }
+    .brand__name span { color: rgba(255, 248, 237, .72); }
+    .nav__links a { color: rgba(255, 248, 237, .86); }
+    .nav__links a:hover { color: #F1A17F; }
+    .nav__links a::after { background: var(--copper-light); }
+    .nav__cta {
+      color: #FFF8ED;
+      border-color: rgba(255, 248, 237, .42);
+    }
+    .nav__cta:hover {
+      color: #FFF8ED;
+      background: var(--copper);
+      border-color: var(--copper);
+    }
+    .menu-toggle {
+      color: #FFF8ED;
+      border-color: rgba(255, 248, 237, .38);
+    }
+
+    /* One editorial font, one shared scale, upright emphasis for every large title */
+    .hero h1,
+    .story__headline,
+    .philosophy__title,
+    .contact__title {
+      font-family: var(--serif);
+      font-size: var(--display-size);
+      font-weight: 400;
+      font-style: normal !important;
+      line-height: 1.06;
+      letter-spacing: -.045em;
+      color: var(--olive);
+      text-wrap: balance;
+    }
+    .hero h1 em,
+    .story__headline em,
+    .philosophy__title em,
+    .contact__title em,
+    .display em {
+      font-style: normal !important;
+      font-weight: 400;
+    }
+    .hero h1 em,
+    .story__headline em,
+    .contact__title em { color: var(--copper); }
+    .philosophy__title { color: #FFF8ED; }
+    .philosophy__title em { color: #F0A17E; }
+
+    /* Warmer, higher-contrast supporting copy */
+    .hero__lead, .story__body p, .contact__intro,
+    .contact__details > p { color: #5D5A50; }
+    .story__label p { color: #777064; }
+    .eyebrow, .section-kicker { color: var(--copper); }
+    .philosophy__head .section-kicker { color: #F0B08F; }
+
+    /* Hero: keep the inset nut photo away from the caption's first letter */
+    .hero__photo-wrap {
+      z-index: 2;
+      overflow: hidden;
+    }
+    .hero__mini {
+      z-index: 3;
+      left: 0;
+      bottom: -10px;
+      width: 35%;
+      height: 174px;
+    }
+    .hero__orb { z-index: 4; }
+    .hero__photo-label {
+      z-index: 5;
+      left: 54%;
+      right: 6%;
+      bottom: 28px;
+      max-width: 44%;
+      text-align: right;
+    }
+    .hero__photo-label span { white-space: nowrap; }
+    .hero__photo-label strong {
+      font-family: var(--serif);
+      font-size: 25px;
+      line-height: 1.16;
+      font-style: normal;
+    }
+
+    .site-header .nav__links {
+      background: var(--olive);
+    }
+    .site-header .nav__links a {
+      color: rgba(255, 248, 237, .9);
+      border-bottom-color: rgba(255, 248, 237, .14);
+    }
+    .site-header .nav__links a:hover { color: #F0A17E; }
+
+    .btn--dark {
+      background: var(--copper);
+      color: #FFF9F1;
+    }
+    .btn--dark:hover { background: #C94B34; }
+    .btn--line {
+      color: var(--olive);
+      border-color: rgba(63, 73, 53, .42);
+    }
+    .btn--line:hover {
+      color: var(--copper);
+      border-color: var(--copper);
+    }
+    .contact-form { background: #FBF7EF; }
+    .footer { color: #FFF8ED; }
+    .footer__brand strong { color: #FFF8ED; }
+    .footer__brand > span > span { color: rgba(255, 248, 237, .65); }
+    .footer__links a, .footer__bottom, .back-top { color: rgba(255, 248, 237, .78); }
+
+    @media (min-width: 761px) {
+      .hero__photo-label { min-width: 0; }
+    }
+    @media (max-width: 760px) {
+      .site-header,
+      .site-header.is-sticky { background: var(--olive); }
+      .site-header .nav__links {
+        background: var(--olive);
+        border-color: rgba(255, 248, 237, .14);
+        box-shadow: 0 16px 28px rgba(25, 31, 23, .2);
+      }
+      .hero h1,
+      .story__headline,
+      .philosophy__title,
+      .contact__title {
+        font-size: var(--display-size-mobile);
+        line-height: 1.08;
+        letter-spacing: -.04em;
+      }
+      .hero__photo-label {
+        left: 16px;
+        right: 16px;
+        max-width: none;
+        bottom: 16px;
+        text-align: left;
+      }
+      .hero__photo-label span { white-space: normal; }
+      .hero__photo-label strong { font-size: 21px; }
+    }
+    @media (max-width: 390px) {
+      .hero h1,
+      .story__headline,
+      .philosophy__title,
+      .contact__title { font-size: 35px; }
+    }
+
+    /* Header and footer color correction: restore the warm cream header,
+       and make the footer use the exact same brand surface color. */
+    .site-header,
+    .site-header.is-sticky {
+      background: var(--paper);
+      border-bottom: 1px solid rgba(63, 73, 53, .14);
+      box-shadow: 0 8px 28px rgba(48, 37, 31, .045);
+      backdrop-filter: blur(14px);
+    }
+    .brand__name strong { color: var(--olive); }
+    .brand__name span { color: var(--muted); }
+    .nav__links a { color: var(--olive); }
+    .nav__links a:hover { color: var(--copper); }
+    .nav__links a::after { background: var(--copper); }
+    .nav__cta {
+      color: var(--olive);
+      border-color: rgba(63, 73, 53, .34);
+    }
+    .nav__cta:hover {
+      color: #FFF9F1;
+      background: var(--copper);
+      border-color: var(--copper);
+    }
+    .menu-toggle {
+      color: var(--olive);
+      border-color: rgba(63, 73, 53, .28);
+    }
+    .site-header .nav__links {
+      background: var(--paper);
+      border-color: rgba(63, 73, 53, .14);
+      box-shadow: 0 16px 28px rgba(48, 37, 31, .08);
+    }
+    .site-header .nav__links a {
+      color: var(--olive);
+      border-bottom-color: rgba(63, 73, 53, .12);
+    }
+    .site-header .nav__links a:hover { color: var(--copper); }
+
+    .footer {
+      background: var(--paper);
+      color: #5D5A50;
+      border-top: 1px solid rgba(63, 73, 53, .14);
+    }
+    .footer__top { border-bottom-color: rgba(63, 73, 53, .16); }
+    .footer__brand strong { color: var(--olive); }
+    .footer__brand > span > span { color: var(--muted); }
+    .footer__links a,
+    .footer__bottom,
+    .back-top { color: #686457; }
+    .footer__links a:hover,
+    .back-top:hover { color: var(--copper); }
+    .footer__bottom strong { color: var(--copper); }
+
+    @media (max-width: 760px) {
+      .site-header,
+      .site-header.is-sticky { background: var(--paper); }
+      .site-header .nav__links { background: var(--paper); }
+    }
+
   </style>
 </head>
 <body class="is-loading">
